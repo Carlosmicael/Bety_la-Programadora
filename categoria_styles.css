@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 50%, #ffd3a5 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-fluid {
+    height: 100vh;
+    padding: 0;
+}
+
+.bg-overlay {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    position: relative;
+    z-index: 10;
+}
+
+.form-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #4ecdc4;
+    margin-bottom: 15px;
+}
+
+.underline {
+    width: 80px;
+    height: 3px;
+    background: #4ecdc4;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.highlight {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    display: block;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    background: rgba(178, 235, 242, 0.3);
+    font-size: 14px;
+    color: #555;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.modern-input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.modern-input:focus {
+    background: rgba(178, 235, 242, 0.5);
+    border-color: #4ecdc4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
+}
+
+.modern-input:valid {
+    border-color: #4ecdc4;
+}
+
+/* Estilos específicos para select */
+select.modern-input {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Estilos específicos para input file */
+.file-input {
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.file-input::-webkit-file-upload-button {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #4ecdc4;
+}
+
+.modern-btn {
+    border: none;
+    border-radius: 50px !important;
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+}
+
+.modern-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(78, 205, 196, 0.4);
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.modern-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+.back-link {
+    color: #4ecdc4 !important;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: #44a08d !important;
+    text-decoration: underline;
+    transform: translateX(-5px);
+}
+
+/* Decorative elements */
+.decoration {
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.decoration-left {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+    top: 10%;
+    left: -100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.decoration-right {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #ffd3a5, #fd9853);
+    bottom: 10%;
+    right: -150px;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 30px 20px;
+        margin: 20px;
+        border-radius: 20px;
+    }
+    
+    .title {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .decoration-left,
+    .decoration-right {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-card {
+        padding: 25px 15px;
+    }
+    
+    .title {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    
+    .modern-input {
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+    
+    .form-label {
+        font-size: 13px;
+    }
+}
+
+/* Animaciones adicionales */
+.form-card {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de validación */
+.modern-input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.modern-input:valid:not(:placeholder-shown) {
+    border-color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+}
