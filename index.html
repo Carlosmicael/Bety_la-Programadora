@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Comercio de Loja - Sistema de Servicios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-building"></i>
+                    <span>Cámara de Comercio de Loja</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#publicaciones" class="nav-link">Publicaciones</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Cámara de Comercio de Loja</h1>
+                <p class="hero-subtitle">Sistema de Servicios y Consumibles</p>
+                <p class="hero-description">
+                    Nuestro gremio a lo largo de los años ha estado siempre preocupado por brindar mejores servicios 
+                    y beneficios a sus afiliados, por ello de manera permanente se realizan acciones que permitan 
+                    su desarrollo e innovación.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#publicaciones" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Nueva Publicación
+                    </a>
+                    <a href="#servicios" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        Ver Servicios
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Servicios de Calidad</h3>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Negocio Seguro</h3>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Desarrollo Económico</h3>
+                </div>
+            </div>
+        </div>
+        <div class="hero-waves"></div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="nosotros" class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Forma parte de la Cámara de Comercio de Loja</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Mantenemos su negocio seguro y garantizamos una alta disponibilidad</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Herramientas de Calidad</h3>
+                    <p>Brindamos herramientas que permiten mejorar tu actividad económica y garantizamos servicios de calidad</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Componente Humano</h3>
+                    <p>Para nosotros el componente humano es fundamental, estamos comprometidos con el desarrollo de nuestros socios</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Múltiples Beneficios</h3>
+                    <p>Siendo parte de nuestro gremio obtienes múltiples beneficios para ti, tu familia y miembros de tu negocio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publicaciones" class="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Publicaciones de Servicios</h2>
+                <p>Comparte tus servicios y productos con nuestra comunidad</p>
+            </div>
+            
+            <!-- Publication Form -->
+            <div class="publication-form-container">
+                <div class="form-card">
+                    <div class="form-header">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Nueva Publicación</h3>
+                    </div>
+                    <form id="publicationForm" class="publication-form">
+                        <div class="form-group">
+                            <label for="titulo">
+                                <i class="fas fa-heading"></i>
+                                Título de la Publicación
+                            </label>
+                            <input type="text" id="titulo" name="titulo" required maxlength="200" 
+                                   placeholder="Ingrese el título de su publicación">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servicio">
+                                <i class="fas fa-tags"></i>
+                                Servicio
+                            </label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Seleccione un servicio</option>
+                                <option value="consultoria">Consultoría Empresarial</option>
+                                <option value="capacitacion">Capacitación</option>
+                                <option value="comercio">Comercio</option>
+                                <option value="servicios-profesionales">Servicios Profesionales</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contenido">
+                                <i class="fas fa-align-left"></i>
+                                Contenido
+                            </label>
+                            <textarea id="contenido" name="contenido" required rows="6" 
+                                      placeholder="Describa detalladamente su servicio o producto..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imagenes">
+                                <i class="fas fa-images"></i>
+                                Imágenes (Opcional)
+                            </label>
+                            <div class="file-upload-area" id="fileUploadArea">
+                                <input type="file" id="imagenes" name="imagenes" multiple accept="image/*">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
+                                    <span>Formatos: JPG, PNG, GIF (Máx. 5MB cada una)</span>
+                                </div>
+                            </div>
+                            <div id="imagePreview" class="image-preview"></div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Publicar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Publications Display -->
+            <div class="publications-grid" id="publicationsGrid">
+                <!-- Sample publications will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Descubre todos los servicios que ofrecemos a nuestros afiliados</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certificaciones</h3>
+                    <p>Certificaciones comerciales y empresariales</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Capacitación</h3>
+                    <p>Programas de formación empresarial</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Networking</h3>
+                    <p>Conexiones empresariales y comerciales</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Consultoría</h3>
+                    <p>Asesoría especializada para tu negocio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contáctanos</h2>
+                <p>Estamos aquí para apoyarte en el crecimiento de tu negocio</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Dirección</h3>
+                    <p>Loja, Ecuador</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Teléfono</h3>
+                    <p>+593 7 XXX-XXXX</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>info@camaracomercioloja.ec</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cámara de Comercio de Loja</h3>
+                    <p>Comprometidos con el desarrollo empresarial y económico de nuestra región.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#publicaciones">Publicaciones</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cámara de Comercio de Loja. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
