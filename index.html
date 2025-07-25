@@ -3,303 +3,677 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cámara de Comercio de Loja - Sistema de Servicios</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Analizador Sintáctico LR - Compilador</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #475569;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #0c1426 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-header i {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .code-editor {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-primary);
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            line-height: 1.5;
+        }
+
+        .code-editor:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .code-editor::placeholder {
+            color: var(--text-muted);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+
+        .results-section {
+            margin-top: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tokens-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .tokens-table th {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tokens-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .tokens-table tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .console-output {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .console-line {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0;
+        }
+
+        .console-line.info {
+            color: var(--text-secondary);
+        }
+
+        .console-line.success {
+            color: var(--success-color);
+        }
+
+        .console-line.error {
+            color: var(--error-color);
+        }
+
+        .console-line.warning {
+            color: var(--warning-color);
+        }
+
+        .error-container {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .error {
+            color: var(--error-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+
+        .loading {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .loading.show {
+            display: flex;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+        }
+
+        .syntax-highlight {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        .comment { color: #5c6370; }
+        .operator { color: #56b6c2; }
+        .identifier { color: #e06c75; }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-building"></i>
-                    <span>Cámara de Comercio de Loja</span>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#publicaciones" class="nav-link">Publicaciones</a></li>
-                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-code"></i> Analizador Sintáctico LR</h1>
+            <p>Analizador léxico y sintáctico avanzado con interfaz moderna. Ingresa tu código y observa el proceso de análisis en tiempo real.</p>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Cámara de Comercio de Loja</h1>
-                <p class="hero-subtitle">Sistema de Servicios y Consumibles</p>
-                <p class="hero-description">
-                    Nuestro gremio a lo largo de los años ha estado siempre preocupado por brindar mejores servicios 
-                    y beneficios a sus afiliados, por ello de manera permanente se realizan acciones que permitan 
-                    su desarrollo e innovación.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#publicaciones" class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                        Nueva Publicación
-                    </a>
-                    <a href="#servicios" class="btn btn-secondary">
-                        <i class="fas fa-eye"></i>
-                        Ver Servicios
-                    </a>
+        <div class="main-grid">
+            <!-- Panel de entrada -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Editor de Código</h2>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="floating-card card-1">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Servicios de Calidad</h3>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Negocio Seguro</h3>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Desarrollo Económico</h3>
-                </div>
-            </div>
-        </div>
-        <div class="hero-waves"></div>
-    </section>
+                
+                <div class="input-group">
+                    <label class="input-label" for="inputCode">
+                        <i class="fas fa-code"></i> Código fuente
+                    </label>
+                    <textarea 
+                        id="inputCode" 
+                        class="code-editor" 
+                        placeholder="// Ingresa tu código aquí
+let x = 10;
+if (x > 5) {
+    pr('El valor es mayor a 5');
+}
 
-    <!-- Why Choose Us Section -->
-    <section id="nosotros" class="why-choose-us">
-        <div class="container">
-            <div class="section-header">
-                <h2>¿Por qué elegirnos?</h2>
-                <p>Forma parte de la Cámara de Comercio de Loja</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Seguridad Garantizada</h3>
-                    <p>Mantenemos su negocio seguro y garantizamos una alta disponibilidad</p>
+fun suma(a, b) => a + b;
+let resultado = suma(3, 7);"
+                    ></textarea>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Herramientas de Calidad</h3>
-                    <p>Brindamos herramientas que permiten mejorar tu actividad económica y garantizamos servicios de calidad</p>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="analizarCodigo()">
+                        <i class="fas fa-play"></i>
+                        Analizar Código
+                    </button>
+                    <button class="btn btn-secondary" onclick="limpiarEditor()">
+                        <i class="fas fa-trash"></i>
+                        Limpiar
+                    </button>
+                    <button class="btn btn-secondary" onclick="cargarEjemplo()">
+                        <i class="fas fa-file-code"></i>
+                        Cargar Ejemplo
+                    </button>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Componente Humano</h3>
-                    <p>Para nosotros el componente humano es fundamental, estamos comprometidos con el desarrollo de nuestros socios</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Múltiples Beneficios</h3>
-                    <p>Siendo parte de nuestro gremio obtienes múltiples beneficios para ti, tu familia y miembros de tu negocio</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Publications Section -->
-    <section id="publicaciones" class="publications">
-        <div class="container">
-            <div class="section-header">
-                <h2>Publicaciones de Servicios</h2>
-                <p>Comparte tus servicios y productos con nuestra comunidad</p>
-            </div>
-            
-            <!-- Publication Form -->
-            <div class="publication-form-container">
-                <div class="form-card">
-                    <div class="form-header">
-                        <i class="fas fa-plus-circle"></i>
-                        <h3>Nueva Publicación</h3>
-                    </div>
-                    <form id="publicationForm" class="publication-form">
-                        <div class="form-group">
-                            <label for="titulo">
-                                <i class="fas fa-heading"></i>
-                                Título de la Publicación
-                            </label>
-                            <input type="text" id="titulo" name="titulo" required maxlength="200" 
-                                   placeholder="Ingrese el título de su publicación">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="servicio">
-                                <i class="fas fa-tags"></i>
-                                Servicio
-                            </label>
-                            <select id="servicio" name="servicio" required>
-                                <option value="">Seleccione un servicio</option>
-                                <option value="consultoria">Consultoría Empresarial</option>
-                                <option value="capacitacion">Capacitación</option>
-                                <option value="comercio">Comercio</option>
-                                <option value="servicios-profesionales">Servicios Profesionales</option>
-                                <option value="tecnologia">Tecnología</option>
-                                <option value="otros">Otros</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contenido">
-                                <i class="fas fa-align-left"></i>
-                                Contenido
-                            </label>
-                            <textarea id="contenido" name="contenido" required rows="6" 
-                                      placeholder="Describa detalladamente su servicio o producto..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="imagenes">
-                                <i class="fas fa-images"></i>
-                                Imágenes (Opcional)
-                            </label>
-                            <div class="file-upload-area" id="fileUploadArea">
-                                <input type="file" id="imagenes" name="imagenes" multiple accept="image/*">
-                                <div class="upload-content">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
-                                    <span>Formatos: JPG, PNG, GIF (Máx. 5MB cada una)</span>
-                                </div>
-                            </div>
-                            <div id="imagePreview" class="image-preview"></div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="resetForm()">
-                                <i class="fas fa-times"></i>
-                                Cancelar
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i>
-                                Publicar
-                            </button>
-                        </div>
-                    </form>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <span>Analizando código...</span>
                 </div>
             </div>
 
-            <!-- Publications Display -->
-            <div class="publications-grid" id="publicationsGrid">
-                <!-- Sample publications will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestros Servicios</h2>
-                <p>Descubre todos los servicios que ofrecemos a nuestros afiliados</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certificaciones</h3>
-                    <p>Certificaciones comerciales y empresariales</p>
+            <!-- Panel de información -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h2>Información del Analizador</h2>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Capacitación</h3>
-                    <p>Programas de formación empresarial</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Networking</h3>
-                    <p>Conexiones empresariales y comerciales</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Consultoría</h3>
-                    <p>Asesoría especializada para tu negocio</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contáctanos</h2>
-                <p>Estamos aquí para apoyarte en el crecimiento de tu negocio</p>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Dirección</h3>
-                    <p>Loja, Ecuador</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>Teléfono</h3>
-                    <p>+593 7 XXX-XXXX</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>info@camaracomercioloja.ec</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Cámara de Comercio de Loja</h3>
-                    <p>Comprometidos con el desarrollo empresarial y económico de nuestra región.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#publicaciones">Publicaciones</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
+                
+                <div style="color: var(--text-secondary); line-height: 1.6;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Características
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                            Análisis léxico completo
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                            Parser LR con tabla de acciones
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                            Detección de errores sintácticos
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                            Visualización del proceso
+                        </li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+
+                    <h3 style="color: var(--text-primary); margin: 1.5rem 0 1rem;">
+                        <i class="fas fa-language"></i> Tokens Soportados
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; font-size: 0.85rem;">
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Identificadores</span>
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Números</span>
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Cadenas</span>
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Operadores</span>
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Palabras clave</span>
+                        <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Comentarios</span>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Cámara de Comercio de Loja. Todos los derechos reservados.</p>
+        </div>
+
+        <!-- Resultados -->
+        <div class="results-section">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Resultados del Análisis</h2>
+                </div>
+
+                <div id="statusContainer"></div>
+
+                <div class="tabs">
+                    <button class="tab active" onclick="mostrarTab('tokens')">
+                        <i class="fas fa-list"></i> Tokens
+                    </button>
+                    <button class="tab" onclick="mostrarTab('sintactico')">
+                        <i class="fas fa-sitemap"></i> Análisis Sintáctico
+                    </button>
+                    <button class="tab" onclick="mostrarTab('errores')">
+                        <i class="fas fa-exclamation-triangle"></i> Errores
+                    </button>
+                </div>
+
+                <div id="tokens-tab" class="tab-content active">
+                    <table class="tokens-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-hashtag"></i> #</th>
+                                <th><i class="fas fa-code"></i> Token</th>
+                                <th><i class="fas fa-tag"></i> Tipo</th>
+                                <th><i class="fas fa-folder"></i> Categoría</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaTokens">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                    <i class="fas fa-info-circle"></i>
+                                    Los tokens aparecerán aquí después del análisis
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="sintactico-tab" class="tab-content">
+                    <div class="console-output" id="consolaSintactico">
+                        <div class="console-line info">
+                            <i class="fas fa-terminal"></i> Consola del analizador sintáctico
+                        </div>
+                        <div class="console-line info">
+                            Ejecuta el análisis para ver el proceso paso a paso...
+                        </div>
+                    </div>
+                </div>
+
+                <div id="errores-tab" class="tab-content">
+                    <div id="errores">
+                        <div style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                            <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                            No hay errores que mostrar
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <script src="analizador.js"></script>
+    <script>
+        // Funciones de la interfaz
+        function mostrarTab(tabName) {
+            // Ocultar todas las pestañas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function limpiarEditor() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('tablaTokens').innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                        <i class="fas fa-info-circle"></i>
+                        Los tokens aparecerán aquí después del análisis
+                    </td>
+                </tr>
+            `;
+            document.getElementById('consolaSintactico').innerHTML = `
+                <div class="console-line info">
+                    <i class="fas fa-terminal"></i> Consola del analizador sintáctico
+                </div>
+                <div class="console-line info">
+                    Ejecuta el análisis para ver el proceso paso a paso...
+                </div>
+            `;
+            document.getElementById('errores').innerHTML = `
+                <div style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                    No hay errores que mostrar
+                </div>
+            `;
+            document.getElementById('statusContainer').innerHTML = '';
+        }
+
+        function cargarEjemplo() {
+            const ejemplo = `// Ejemplo de código para análisis
+let nombre = "Juan";
+let edad = 25;
+let activo = true;
+
+if (edad >= 18) {
+    pr("Es mayor de edad");
+} else {
+    pr("Es menor de edad");
+}
+
+fun calcular(x, y) => {
+    let resultado = x * y + 10;
+    return resultado;
+};
+
+let valor = calcular(5, 3);
+pr("El resultado es: " + valor);`;
+            
+            document.getElementById('inputCode').value = ejemplo;
+        }
+
+        function analizarCodigo() {
+            const loading = document.getElementById('loading');
+            loading.classList.add('show');
+            
+            // Simular delay para mostrar loading
+            setTimeout(() => {
+                try {
+                    // Ejecutar análisis léxico
+                    analizar();
+                    
+                    // Ejecutar análisis sintáctico si está disponible
+                    const code = document.getElementById('inputCode').value;
+                    if (code.trim() && typeof parserLR === 'function') {
+                        const lineas = code.split('\n').filter(linea => linea.trim());
+                        parserLR(lineas);
+                    }
+                    
+                    // Mostrar estado de éxito
+                    mostrarEstado('success', 'Análisis completado correctamente');
+                    
+                } catch (error) {
+                    console.error('Error en el análisis:', error);
+                    mostrarEstado('error', 'Error durante el análisis: ' + error.message);
+                } finally {
+                    loading.classList.remove('show');
+                }
+            }, 500);
+        }
+
+        function mostrarEstado(tipo, mensaje) {
+            const container = document.getElementById('statusContainer');
+            const iconos = {
+                success: 'fas fa-check-circle',
+                error: 'fas fa-exclamation-circle',
+                warning: 'fas fa-exclamation-triangle'
+            };
+            
+            container.innerHTML = `
+                <div class="status-indicator status-${tipo}">
+                    <i class="${iconos[tipo]}"></i>
+                    <span>${mensaje}</span>
+                </div>
+            `;
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarEjemplo();
+        });
+    </script>
 </body>
 </html>
