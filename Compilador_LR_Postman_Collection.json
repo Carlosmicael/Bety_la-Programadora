@@ -1,0 +1,220 @@
+{
+  "info": {
+    "name": "Compilador LR - API",
+    "description": "Colección de Postman para probar el analizador léxico y sintáctico LR",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Información de la API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        },
+        "description": "Obtiene información general sobre la API y sus endpoints disponibles."
+      }
+    },
+    {
+      "name": "2. Compilación Completa - Ejemplo Simple",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"Start () { text variable1, variable2 }\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/compilar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["compilar"]
+        },
+        "description": "Realiza análisis léxico y sintáctico completo de un programa simple con declaración de variables."
+      }
+    },
+    {
+      "name": "3. Compilación Completa - Con IF",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"Start () { if ( condicion >= valor ) { text resultado } Else { text alternativo } }\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/compilar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["compilar"]
+        },
+        "description": "Analiza un programa con estructura condicional if-else."
+      }
+    },
+    {
+      "name": "4. Compilación Completa - Con Asignación",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"Start () { variable = expresion }\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/compilar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["compilar"]
+        },
+        "description": "Analiza un programa con asignación de variables."
+      }
+    },
+    {
+      "name": "5. Solo Análisis Léxico",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"Start () { text variable1, variable2 }\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/lexico",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["lexico"]
+        },
+        "description": "Realiza únicamente el análisis léxico del código fuente."
+      }
+    },
+    {
+      "name": "6. Solo Análisis Sintáctico",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tokens\": [\n    {\"token\": \"Start\", \"tipo\": \"Start\", \"categoria\": \"palabra_reservada\"},\n    {\"token\": \"(\", \"tipo\": \"(\", \"categoria\": \"simbolo_valido\"},\n    {\"token\": \")\", \"tipo\": \")\", \"categoria\": \"simbolo_valido\"},\n    {\"token\": \"{\", \"tipo\": \"{\", \"categoria\": \"simbolo_valido\"},\n    {\"token\": \"text\", \"tipo\": \"text\", \"categoria\": \"palabra_reservada\"},\n    {\"token\": \"variable1\", \"tipo\": \"id\", \"categoria\": \"identificador_valido\"},\n    {\"token\": \",\", \"tipo\": \",\", \"categoria\": \"simbolo_valido\"},\n    {\"token\": \"variable2\", \"tipo\": \"id\", \"categoria\": \"identificador_valido\"},\n    {\"token\": \"}\", \"tipo\": \"}\", \"categoria\": \"simbolo_valido\"}\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/sintactico",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["sintactico"]
+        },
+        "description": "Realiza únicamente el análisis sintáctico usando tokens previamente generados."
+      }
+    },
+    {
+      "name": "7. Ver Gramática",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/gramatica",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["gramatica"]
+        },
+        "description": "Muestra la gramática utilizada por el compilador."
+      }
+    },
+    {
+      "name": "8. Ver Tablas LR",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/tabla-lr",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["tabla-lr"]
+        },
+        "description": "Muestra las tablas ACTION, GOTO y de reducciones del analizador LR."
+      }
+    },
+    {
+      "name": "9. Ver Ejemplos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/ejemplo",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["ejemplo"]
+        },
+        "description": "Obtiene ejemplos de código válido para probar."
+      }
+    },
+    {
+      "name": "10. Código Inválido - Error Sintáctico",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"Start ( { text variable1 }\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/compilar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["compilar"]
+        },
+        "description": "Prueba con código sintácticamente incorrecto para ver el manejo de errores."
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
