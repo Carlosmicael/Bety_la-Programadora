@@ -1,0 +1,126 @@
+<div class="form-slide" data-slide="4">
+    <h4 class="slide-title">Confirmación de Datos</h4>
+
+    <div class="form-section">
+        <h5 class="section-title">
+            <i class="icon-insurance"></i>
+            Información del Titular
+        </h5>
+        <div class="section-help">Datos del titular para el seguro de afiliación</div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="{{ seguro_form.nombre_titular.id_for_label }}" class="form-label required">
+                    {{ seguro_form.nombre_titular.label }}
+                </label>
+                {{ seguro_form.nombre_titular }}
+                <div class="field-help">Nombre completo del titular del seguro</div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ seguro_form.telefono_titular.id_for_label }}" class="form-label required">
+                    {{ seguro_form.telefono_titular.label }}
+                </label>
+                {{ seguro_form.telefono_titular }}
+                <div class="field-help">Teléfono de contacto del titular</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ seguro_form.fecha_nacimiento_titular.id_for_label }}" class="form-label required">
+                        {{ seguro_form.fecha_nacimiento_titular.label }}
+                    </label>
+                    {{ seguro_form.fecha_nacimiento_titular }}
+                    <div class="field-help">Fecha de nacimiento</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ seguro_form.cedula_titular.id_for_label }}" class="form-label required">
+                        {{ seguro_form.cedula_titular.label }}
+                    </label>
+                    {{ seguro_form.cedula_titular }}
+                    <div class="field-help">Número de cédula</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h5 class="section-title">
+            <i class="icon-beneficiary"></i>
+            Beneficiario del Seguro
+        </h5>
+        <div class="section-help">Persona que recibirá el beneficio en caso de fallecimiento del titular</div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="{{ seguro_form.nombre_beneficiario.id_for_label }}" class="form-label required">
+                    {{ seguro_form.nombre_beneficiario.label }}
+                </label>
+                {{ seguro_form.nombre_beneficiario }}
+                <div class="field-help">Nombre completo del beneficiario</div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ seguro_form.porcentaje_beneficiario.id_for_label }}" class="form-label required">
+                    {{ seguro_form.porcentaje_beneficiario.label }}
+                </label>
+                {{ seguro_form.porcentaje_beneficiario }}
+                <div class="field-help">Porcentaje del beneficio (generalmente 100%)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h5 class="section-title">
+            <i class="icon-signature"></i>
+            Firma y Confirmación
+        </h5>
+        
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="{{ seguro_form.firma_titular.id_for_label }}" class="form-label required">
+                    {{ seguro_form.firma_titular.label }}
+                </label>
+                {{ seguro_form.firma_titular }}
+                <div class="field-help">Escriba su nombre completo como firma digital</div>
+            </div>
+        </div>
+
+        <div class="confirmation-notice">
+            <div class="notice-icon">📋</div>
+            <div class="notice-content">
+                <h6>Confirmación de Datos</h6>
+                <p>Al hacer clic en "Registrarme", confirmo que:</p>
+                <ul>
+                    <li>Todos los datos proporcionados son veraces y están actualizados</li>
+                    <li>Acepto los términos y condiciones de la Cámara de Comercio de Loja</li>
+                    <li>Autorizo el tratamiento de mis datos personales conforme a la ley</li>
+                    <li>Me comprometo a mantener actualizada la información proporcionada</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {# Errores del formulario de seguro #}
+    {% if seguro_form.errors %}
+        <div class="alert alert-danger">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+                <h6>Por favor, corrija los siguientes errores:</h6>
+                {% for field in seguro_form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p><strong>{{ field.label }}:</strong> {{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                {% if seguro_form.non_field_errors %}
+                    {% for error in seguro_form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</div>
