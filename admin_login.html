@@ -1,0 +1,160 @@
+{% load static %}
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión - Administrador | Fine to English</title>
+  
+  <!-- Preconnect to external resources for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/docente_login.css' %}" />
+  
+  <!-- Bootstrap Icons for enhanced UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'img/logo2.png' %}">
+</head>
+
+<body>
+  <div class="d-flex flex-row vh-100">
+    <div class="col-12 col-md-5 bg-overlay d-flex align-items-center justify-content-center">
+      
+      <div class="login-form-card position-relative">
+        <!-- Header Section -->
+        <div class="text-center mb-4">
+          <div class="logo-container">
+            <img src="{% static 'img/logo2.png' %}" alt="Logo Fine to English" class="logo-ccl" />
+          </div>
+          <hr>
+          <h1 class="mb-1 fw-bold">
+            <i class="bi bi-shield-check me-2"></i>
+            Iniciar Sesión
+          </h1>
+          <p class="text-muted small mt-2">Panel de Administración</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'administrador_login' %}" id="loginForm">
+          {% csrf_token %}
+          
+          <!-- Email Field -->
+          <div class="form-group mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label">
+              <i class="bi bi-envelope me-1"></i>
+              {{ form.email.label }}
+            </label>
+            <div class="input-group">
+              {{ form.email }}
+            </div>
+          </div>
+          
+          <!-- Password Field -->
+          <div class="form-group mb-4">
+            <label for="{{ form.password.id_for_label }}" class="form-label">
+              <i class="bi bi-lock me-1"></i>
+              {{ form.password.label }}
+            </label>
+            <div class="input-group">
+              {{ form.password }}
+              <button class="btn btn-outline-secondary" type="button" id="togglePassword" aria-label="Mostrar contraseña">
+                <i class="bi bi-eye" id="eyeIcon"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-warning w-100 rounded-pill fw-bold py-2" id="submitBtn">
+            <i class="bi bi-box-arrow-in-right me-2"></i>
+            Iniciar sesión
+          </button>
+        </form>
+        
+        <!-- Footer Links -->
+        <div class="d-flex justify-content-center align-items-center mt-4">
+          <div class="text-center">
+            <p class="text-muted small mb-2">¿Eres docente?</p>
+            <a href="{% url 'docente_login' %}" class="enlace-azul fw-bold">
+              <i class="bi bi-person-workspace me-1"></i>
+              Acceso Docentes
+            </a>
+          </div>
+        </div>
+        
+        <!-- Branding Footer -->
+        <div class="text-center mt-4 pt-3 border-top border-light">
+          <small class="text-muted">
+            <i class="bi bi-mortarboard me-1"></i>
+            Fine to English - Excellence in Education
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  
+  <!-- Enhanced JavaScript for better UX -->
+  <script>
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function() {
+      const passwordField = document.querySelector('input[type="password"]');
+      const eyeIcon = document.getElementById('eyeIcon');
+      
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.classList.remove('bi-eye');
+        eyeIcon.classList.add('bi-eye-slash');
+      } else {
+        passwordField.type = 'password';
+        eyeIcon.classList.remove('bi-eye-slash');
+        eyeIcon.classList.add('bi-eye');
+      }
+    });
+
+    // Form submission loading state
+    document.getElementById('loginForm').addEventListener('submit', function() {
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.classList.add('loading');
+      submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Iniciando sesión...';
+      submitBtn.disabled = true;
+    });
+
+    // Add focus effects to form fields
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('focused');
+      });
+    });
+
+    // Welcome animation
+    window.addEventListener('load', function() {
+      document.querySelector('.login-form-card').style.opacity = '0';
+      document.querySelector('.login-form-card').style.transform = 'translateY(20px)';
+      
+      setTimeout(function() {
+        document.querySelector('.login-form-card').style.transition = 'all 0.6s ease';
+        document.querySelector('.login-form-card').style.opacity = '1';
+        document.querySelector('.login-form-card').style.transform = 'translateY(0)';
+      }, 100);
+    });
+  </script>
+</body>
+
+</html>
