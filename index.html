@@ -3,303 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cámara de Comercio de Loja - Sistema de Servicios</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Firma Electrónica - Cámara de Comercio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-building"></i>
-                    <span>Cámara de Comercio de Loja</span>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#publicaciones" class="nav-link">Publicaciones</a></li>
-                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Cámara de Comercio de Loja</h1>
-                <p class="hero-subtitle">Sistema de Servicios y Consumibles</p>
-                <p class="hero-description">
-                    Nuestro gremio a lo largo de los años ha estado siempre preocupado por brindar mejores servicios 
-                    y beneficios a sus afiliados, por ello de manera permanente se realizan acciones que permitan 
-                    su desarrollo e innovación.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#publicaciones" class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                        Nueva Publicación
-                    </a>
-                    <a href="#servicios" class="btn btn-secondary">
-                        <i class="fas fa-eye"></i>
-                        Ver Servicios
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="floating-card card-1">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Servicios de Calidad</h3>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Negocio Seguro</h3>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Desarrollo Económico</h3>
-                </div>
-            </div>
-        </div>
-        <div class="hero-waves"></div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section id="nosotros" class="why-choose-us">
+    <section class="hero-section">
         <div class="container">
-            <div class="section-header">
-                <h2>¿Por qué elegirnos?</h2>
-                <p>Forma parte de la Cámara de Comercio de Loja</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold text-white mb-4">
+                            Firma Electrónica
+                            <span class="text-primary">Digital</span>
+                        </h1>
+                        <p class="lead text-white-50 mb-4">
+                            La firma electrónica representa la identidad digital de la Persona o Empresa, 
+                            tiene la misma validez de la firma manuscrita, con la cual puede firmar documentos en línea
+                        </p>
+                        <div class="d-flex gap-3">
+                            <a href="#precios" class="btn btn-primary btn-lg px-4">
+                                <i class="fas fa-dollar-sign me-2"></i>Ver Precios
+                            </a>
+                            <a href="#formulario" class="btn btn-outline-light btn-lg px-4">
+                                <i class="fas fa-file-signature me-2"></i>Solicitar Ahora
+                            </a>
+                        </div>
                     </div>
-                    <h3>Seguridad Garantizada</h3>
-                    <p>Mantenemos su negocio seguro y garantizamos una alta disponibilidad</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tools"></i>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div class="floating-card">
+                            <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+                            <h5>Certificado Digital</h5>
+                            <p class="text-muted">Validez legal garantizada</p>
+                        </div>
                     </div>
-                    <h3>Herramientas de Calidad</h3>
-                    <p>Brindamos herramientas que permiten mejorar tu actividad económica y garantizamos servicios de calidad</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Componente Humano</h3>
-                    <p>Para nosotros el componente humano es fundamental, estamos comprometidos con el desarrollo de nuestros socios</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Múltiples Beneficios</h3>
-                    <p>Siendo parte de nuestro gremio obtienes múltiples beneficios para ti, tu familia y miembros de tu negocio</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publicaciones" class="publications">
+    <!-- Benefits Section -->
+    <section class="benefits-section py-5">
         <div class="container">
-            <div class="section-header">
-                <h2>Publicaciones de Servicios</h2>
-                <p>Comparte tus servicios y productos con nuestra comunidad</p>
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold mb-3">Beneficios</h2>
+                    <p class="lead text-muted">Descubre las ventajas de tener tu firma electrónica</p>
+                </div>
             </div>
-            
-            <!-- Publication Form -->
-            <div class="publication-form-container">
-                <div class="form-card">
-                    <div class="form-header">
-                        <i class="fas fa-plus-circle"></i>
-                        <h3>Nueva Publicación</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card h-100">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Simplifica Trámites</h4>
+                        <p>Reduce el tiempo y los procesos burocráticos. Firma documentos desde cualquier lugar.</p>
                     </div>
-                    <form id="publicationForm" class="publication-form">
-                        <div class="form-group">
-                            <label for="titulo">
-                                <i class="fas fa-heading"></i>
-                                Título de la Publicación
-                            </label>
-                            <input type="text" id="titulo" name="titulo" required maxlength="200" 
-                                   placeholder="Ingrese el título de su publicación">
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-
-                        <div class="form-group">
-                            <label for="servicio">
-                                <i class="fas fa-tags"></i>
-                                Servicio
-                            </label>
-                            <select id="servicio" name="servicio" required>
-                                <option value="">Seleccione un servicio</option>
-                                <option value="consultoria">Consultoría Empresarial</option>
-                                <option value="capacitacion">Capacitación</option>
-                                <option value="comercio">Comercio</option>
-                                <option value="servicios-profesionales">Servicios Profesionales</option>
-                                <option value="tecnologia">Tecnología</option>
-                                <option value="otros">Otros</option>
-                            </select>
+                        <h4>Seguridad y Comodidad</h4>
+                        <p>Máxima seguridad en tus transacciones digitales con la comodidad de firmar desde casa.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
                         </div>
+                        <h4>Amigable con el medio ambiente</h4>
+                        <p>Contribuye al cuidado del planeta reduciendo el uso de papel y traslados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="form-group">
-                            <label for="contenido">
-                                <i class="fas fa-align-left"></i>
-                                Contenido
-                            </label>
-                            <textarea id="contenido" name="contenido" required rows="6" 
-                                      placeholder="Describa detalladamente su servicio o producto..."></textarea>
+    <!-- Steps Section -->
+    <section class="steps-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold mb-3">Pasos para obtener tu Firma Electrónica</h2>
+                    <p class="lead text-muted">Con estos sencillos pasos podrás obtener en menos de 24 horas tu Firma Electrónica desde tu lugar de trabajo o desde la comodidad de tu hogar.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-user-plus"></i>
                         </div>
+                        <h4>Regístrate</h4>
+                        <p>Completa el formulario con tus datos personales</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h4>Ingresa tus datos</h4>
+                        <p>Proporciona la información requerida para la validación</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h4>Descarga tu Firma</h4>
+                        <p>Recibe tu certificado digital listo para usar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="form-group">
-                            <label for="imagenes">
-                                <i class="fas fa-images"></i>
-                                Imágenes (Opcional)
-                            </label>
-                            <div class="file-upload-area" id="fileUploadArea">
-                                <input type="file" id="imagenes" name="imagenes" multiple accept="image/*">
-                                <div class="upload-content">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
-                                    <span>Formatos: JPG, PNG, GIF (Máx. 5MB cada una)</span>
+    <!-- Pricing Section -->
+    <section id="precios" class="pricing-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold mb-3">Precios</h2>
+                    <p class="lead text-muted">¡Precios competitivos y asesoría personalizada, la combinación para un excelente servicio!</p>
+                </div>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="alert alert-info mb-5">
+                <h5><i class="fas fa-info-circle me-2"></i>IMPORTANTE</h5>
+                <p class="mb-0">Para garantizar la seguridad y autenticidad de las firmas electrónicas, las personas con discapacidad visual, auditiva, motora y del habla deben tramitar su firma electrónica de forma presencial en nuestras sucursales. Para personas de la tercera edad, es esencial que estén en pleno uso de sus facultades y comprendan el propósito de la solicitud.</p>
+            </div>
+
+            <!-- Persona Natural SIN RUC -->
+            <div class="pricing-category mb-5">
+                <h3 class="category-title">Firma para persona natural SIN RUC</h3>
+                <p class="category-description">Firma electrónica en archivo, NO VÁLIDA para facturación electrónica. (Cédula o pasaporte)</p>
+                <div class="row g-3">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>1 Año</h4>
+                                <div class="price">$15 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-clock"></i> Emisión: 2 horas</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>2 Años</h4>
+                                <div class="price">$25 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-clock"></i> Emisión: 2 horas</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">Más Popular</div>
+                            <div class="pricing-header">
+                                <h4>3 Años</h4>
+                                <div class="price">$35 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-clock"></i> Emisión: 2 horas</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>4 Años</h4>
+                                <div class="price">$45 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-clock"></i> Emisión: 2 horas</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>5 Años</h4>
+                                <div class="price">$55 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-clock"></i> Emisión: 2 horas</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card express">
+                            <div class="express-badge">EXPRESS</div>
+                            <div class="pricing-header">
+                                <h4>15 Días</h4>
+                                <div class="price">$6.25 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                                <li><i class="fas fa-bolt"></i> Express</li>
+                            </ul>
+                            <button class="btn btn-warning w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persona Natural CON RUC -->
+            <div class="pricing-category mb-5">
+                <h3 class="category-title">Firma para persona natural CON RUC</h3>
+                <p class="category-description">Firma electrónica en archivo, válida para facturación electrónica</p>
+                <div class="row g-3">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>1 Año</h4>
+                                <div class="price">$18 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-success"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>2 Años</h4>
+                                <div class="price">$28 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-success"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">Más Popular</div>
+                            <div class="pricing-header">
+                                <h4>3 Años</h4>
+                                <div class="price">$38 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-success"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>4 Años</h4>
+                                <div class="price">$48 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-success"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>5 Años</h4>
+                                <div class="price">$58 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-success"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persona Jurídica -->
+            <div class="pricing-category mb-5">
+                <h3 class="category-title">Firma para persona JURÍDICA</h3>
+                <p class="category-description">La firma electrónica para persona JURÍDICA es válida para facturación electrónica de compañías y sociedades.</p>
+                <div class="row g-3">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>1 Año</h4>
+                                <div class="price">$20 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-info"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-info w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>2 Años</h4>
+                                <div class="price">$30 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-info"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-info w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">Más Popular</div>
+                            <div class="pricing-header">
+                                <h4>3 Años</h4>
+                                <div class="price">$40 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-info"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-info w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>4 Años</h4>
+                                <div class="price">$50 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-info"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-info w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h4>5 Años</h4>
+                                <div class="price">$60 <small>+IVA</small></div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check text-info"></i> Facturación electrónica</li>
+                                <li><i class="fas fa-check"></i> Firmado de documentos</li>
+                                <li><i class="fas fa-check"></i> Archivo PFX/P12</li>
+                            </ul>
+                            <button class="btn btn-info w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Solicitar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-section mt-5">
+                <h3 class="text-center mb-4">Formas de pago</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="payment-card">
+                            <h5><i class="fas fa-credit-card me-2"></i>Tarjeta de crédito / débito</h5>
+                            <p>Botón de pago en línea seguro</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-card">
+                            <h5><i class="fas fa-university me-2"></i>Transferencia</h5>
+                            <p>Banco Pichincha y Guayaquil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="formulario" class="form-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <div class="form-header text-center mb-4">
+                            <h2 class="display-6 fw-bold">Solicitar Firma Electrónica</h2>
+                            <p class="lead text-muted">Completa el formulario para solicitar tu firma electrónica</p>
+                        </div>
+                        
+                        <form class="signature-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                                        <label for="nombre"><i class="fas fa-user me-2"></i>Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
+                                        <label for="apellido"><i class="fas fa-user me-2"></i>Apellido</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cedula" placeholder="Cédula" required>
+                                        <label for="cedula"><i class="fas fa-id-card me-2"></i>Cédula</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="correo" placeholder="Correo electrónico" required>
+                                        <label for="correo"><i class="fas fa-envelope me-2"></i>Correo electrónico</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="telefono" placeholder="Teléfono" required>
+                                        <label for="telefono"><i class="fas fa-phone me-2"></i>Teléfono</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="tipo_firma" required>
+                                            <option value="">Seleccionar tipo</option>
+                                            <option value="natural_sin_ruc">Persona Natural SIN RUC</option>
+                                            <option value="natural_con_ruc">Persona Natural CON RUC</option>
+                                            <option value="juridica">Persona Jurídica</option>
+                                            <option value="express">Firma Express</option>
+                                        </select>
+                                        <label for="tipo_firma"><i class="fas fa-certificate me-2"></i>Tipo de Firma</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="direccion" placeholder="Dirección" style="height: 100px" required></textarea>
+                                        <label for="direccion"><i class="fas fa-map-marker-alt me-2"></i>Dirección</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="imagePreview" class="image-preview"></div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="resetForm()">
-                                <i class="fas fa-times"></i>
-                                Cancelar
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i>
-                                Publicar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Publications Display -->
-            <div class="publications-grid" id="publicationsGrid">
-                <!-- Sample publications will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestros Servicios</h2>
-                <p>Descubre todos los servicios que ofrecemos a nuestros afiliados</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-certificate"></i>
+                            
+                            <div class="form-actions mt-4">
+                                <button type="button" class="btn btn-success btn-lg w-100 add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart me-2"></i>
+                                    Agregar Servicio al Carrito
+                                    <span class="btn-shine"></span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <h3>Certificaciones</h3>
-                    <p>Certificaciones comerciales y empresariales</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Capacitación</h3>
-                    <p>Programas de formación empresarial</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Networking</h3>
-                    <p>Conexiones empresariales y comerciales</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Consultoría</h3>
-                    <p>Asesoría especializada para tu negocio</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contáctanos</h2>
-                <p>Estamos aquí para apoyarte en el crecimiento de tu negocio</p>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Dirección</h3>
-                    <p>Loja, Ecuador</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>Teléfono</h3>
-                    <p>+593 7 XXX-XXXX</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>info@camaracomercioloja.ec</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer py-4 bg-dark text-white">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Cámara de Comercio de Loja</h3>
-                    <p>Comprometidos con el desarrollo empresarial y económico de nuestra región.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Cámara de Comercio</h5>
+                    <p class="text-white-50">Facilitando el comercio digital con soluciones seguras y confiables.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#publicaciones">Publicaciones</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                    </ul>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50">© 2024 Cámara de Comercio. Todos los derechos reservados.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Cámara de Comercio de Loja. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
